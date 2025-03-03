@@ -8,6 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 
+builder.Services.AddRazorPages();
+builder.Services.AddTransient<Quiz>();
+builder.Services.AddTransient<QuizItem>();
+builder.Services.AddTransient<QuizItemUserAnswer>();
+builder.Services.AddTransient<IQuizUserService, QuizUserService>();
 
 var app = builder.Build();
 
