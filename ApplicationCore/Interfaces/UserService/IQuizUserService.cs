@@ -1,4 +1,4 @@
-﻿using ApplicationCore.Interfaces.Repository;
+using ApplicationCore.Interfaces.Repository;
 
 namespace BackendLab01;
 
@@ -11,6 +11,8 @@ public interface IQuizUserService
     void SaveUserAnswerForQuiz(int quizId, int userId, int quizItemId, string answer);
 
     List<QuizItemUserAnswer> GetUserAnswersForQuiz(int quizId, int userId);
+
+    IEnumerable<Quiz> GetAllQuizzes();
 
     int CountCorrectAnswersForQuizFilledByUser(int quizId, int userId)
     {
