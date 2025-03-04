@@ -1,0 +1,25 @@
+@page
+@model Web.Pages.QuizListModel
+@{
+    ViewData["Title"] = "Available Quizzes";
+}
+
+<h2>Available Quizzes</h2>
+
+@if (Model.Quizzes.Any())
+{
+    <ul class="list-group">
+        @foreach (var quiz in Model.Quizzes)
+        {
+            <li class="list-group-item">
+                <a asp-page="/Quiz/Item" asp-route-quizId="@quiz.Id" asp-route-itemId="1">
+                    @quiz.Title (@quiz.Items.Count questions)
+                </a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No quizzes available at the moment.</p>
+}

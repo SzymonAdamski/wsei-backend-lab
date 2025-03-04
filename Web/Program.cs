@@ -8,6 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 
+// Register repositories and services as singletons
+builder.Services.AddSingleton<IGenericRepository<Quiz, int>>(provider => 
+    new MemoryGenericRepository<Quiz, int>(new IntGenerator()));
+builder.Services.AddSingleton<IGenericRepository<QuizItem, int>>(provider => 
+    new MemoryGenericRepository<QuizItem, int>(new IntGenerator()));
+builder.Services.AddSingleton<IGenericRepository<QuizItemUserAnswer, string>>(provider => 
+    new MemoryGenericRepository<QuizItemUserAnswer, string>());
+builder.Services.AddSingleton<IQuizUserService, QuizUserService>();
 
 var app = builder.Build();
 

@@ -1,8 +1,15 @@
-﻿@page "{quizId}/{itemId}"
+@page "{quizId}"
 @model BackendLab01.Pages.Summary
 @{
-    ViewData["Title"] = "summary";
+    ViewData["Title"] = "Quiz Results";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<H3>@ViewData["Title"]</H3>
+<h2>Quiz Results: @Model.QuizTitle</h2>
+
+<p>You answered @Model.CorrectAnswers out of @Model.TotalQuestions questions correctly!</p>
+
+<div>
+    <a asp-page="/Index" class="btn btn-primary">Back to Home</a>
+    <a asp-page="/Quiz/Item" asp-route-quizId="@Model.QuizId" asp-route-itemId="1" class="btn btn-secondary">Try Again</a>
+</div>

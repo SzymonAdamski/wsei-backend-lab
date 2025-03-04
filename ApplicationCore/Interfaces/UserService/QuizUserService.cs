@@ -1,4 +1,4 @@
-﻿using ApplicationCore.Interfaces.Criteria;
+using ApplicationCore.Interfaces.Criteria;
 using ApplicationCore.Interfaces.Repository;
 
 namespace BackendLab01;
@@ -41,5 +41,10 @@ public class QuizUserService: IQuizUserService
         //     .Where(x => x. UserId == userId)
         //     .ToList();
         return answerRepository.FindBySpecification(new QuizItemsForQuizIdFilledByUser(quizId, userId)).ToList();
+    }
+    
+    public IEnumerable<Quiz> GetAllQuizzes()
+    {
+        return quizRepository.FindAll();
     }
 }
